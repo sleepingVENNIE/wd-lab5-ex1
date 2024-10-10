@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smiley Face</title>
+<style>
+  canvas {
+    border: 1px solid #000;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="smileyCanvas" width="400" height="400"></canvas>
+
+<script>
+const canvas = document.getElementById('smileyCanvas');
+const ctx = canvas.getContext('2d');
+
+// 设置背景颜色
+ctx.fillStyle = '#00ff7f';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+// 绘制笑脸
+ctx.beginPath();
+ctx.arc(canvas.width / 2, canvas.height / 2, 150, 0, Math.PI * 2);
+ctx.closePath();
+ctx.fillStyle = 'yellow';
+ctx.fill();
+
+// 绘制眼睛
+ctx.beginPath();
+ctx.arc((canvas.width / 2) - 70, (canvas.height / 2) - 30, 10, 0, Math.PI * 2);
+ctx.closePath();
+ctx.fillStyle = 'black';
+ctx.fill();
+
+ctx.beginPath();
+ctx.arc((canvas.width / 2) + 70, (canvas.height / 2) - 30, 10, 0, Math.PI * 2);
+ctx.closePath();
+ctx.fillStyle = 'black';
+ctx.fill();
+
+// 绘制鼻子
+ctx.beginPath();
+ctx.moveTo(canvas.width / 2, (canvas.height / 2) - 10);
+ctx.lineTo((canvas.width / 2), (canvas.height / 2) + 30);
+ctx.lineWidth = 1;
+ctx.closePath();
+ctx.stroke();
+
+// 绘制嘴巴（调整中心位置和半径，确保嘴巴垂直居中）
+ctx.beginPath();
+ctx.arc(canvas.width / 2, (canvas.height / 2)+40 , 60, Math.PI/5, 4*Math.PI/5, false); // 从0度开始，到180度结束，形成一个半圆
+ctx.lineWidth = 2; // 设置线条宽度
+ctx.strokeStyle = 'black'; // 设置线条颜色
+ctx.stroke(); // 进行描边
+
+// 添加文字
+ctx.font = "24px Arial";
+ctx.textAlign = "center";
+ctx.fillStyle = 'green';
+ctx.fillText("The Canvas brought me to life!", canvas.width / 2, canvas.height - 20);
+</script>
+
+</body>
+</html>
